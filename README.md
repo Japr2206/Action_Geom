@@ -1,88 +1,77 @@
 # 📘 Geometry of Learning — Computational README
-## 🔬 Why this code is a genuine computational contribution of the paper
 
-This repository is not just a numerical appendix or a visualization add-on.  
-It is the **computational realization** of the mathematical program developed in the paper.
+## 🔬 What this repository contributes
 
-The main contribution of the manuscript is to argue that learning trajectories are not exhausted by their endpoint metrics.  
-Instead, they possess an internal **geometric**, **structural**, and **temporal** organization that can be studied through mathematically defined objects.
+This repository is the **computational realization** of the paper’s main claim:
 
-This code shows that those objects are not merely formal.  
-They can be:
+> **observable learning trajectories are not exhausted by endpoint metrics; they also contain internal temporal and structural organization that can be detected, summarized, and analyzed computationally.**
 
-- defined algorithmically,
-- extracted from real trajectories,
-- summarized in reproducible descriptors,
-- used to detect transitions and regimes,
-- validated statistically,
-- and transferred beyond the synthetic setting.
+The code is therefore not a numerical appendix or a visualization add-on.  
+It implements a **reproducible structural-analysis pipeline** grounded in the mathematical objects introduced in the manuscript and translated into executable procedures.
 
-In that sense, the code provides the paper’s **computational proof of concept**:  
-it demonstrates that the mathematical language of the article leads to a concrete, usable, and informative analysis pipeline.
+In practical terms, the repository shows that the paper’s formal layer can be turned into a usable computational workflow that can:
 
----
+- localize trajectory structure through centered windows,
+- compute interpretable local observables,
+- build temporal structural profiles,
+- detect boundaries and transitions,
+- recover macro-regimes,
+- compare trajectory families beyond endpoint summaries,
+- and validate the framework on both synthetic and public external cases.
 
-# 🧠 The core idea
-
-The paper develops a mathematical framework for studying trajectories through local geometry, mesoscopic structure, and macroscopic organization.
-
-The code turns that framework into an executable pipeline.
-
-The key message is:
-
-> **mathematics is not used here only to justify notation; it determines what is computed, how it is computed, and why the resulting quantities are meaningful.**
-
-This is what makes the repository a true computational contribution.
+That is the repository’s central scientific role.
 
 ---
 
-# ✨ Why the mathematical layer matters computationally
+## 🧠 Core message of the project
 
-A referee may naturally ask:
+The main computational idea is simple:
 
-> “Why is this more than another handcrafted feature extraction script?”
+**two runs can end with similar final loss or final accuracy and still differ meaningfully in their internal temporal organization.**
 
-The answer is: because the feature architecture is **not arbitrary**.
+This repository studies that internal organization through mathematically motivated descriptors rather than ad hoc feature engineering.
 
-The code is built from mathematically motivated objects that appear in the paper:
+The code is built from the paper’s structural language:
 
-1. **local windows** as the discrete analogue of local jets,
+1. **local windows** as discrete analogues of local jets,
 2. **admissible observables** on those windows,
-3. **structural profiles** built from those observables,
-4. **structural mass** as an integrated mesoscopic descriptor,
-5. **superlevel geometry** to isolate persistent structural zones,
-6. **boundary extraction** to locate changes,
-7. **event parsing** to identify transition regions,
-8. **macro-regime decomposition** to recover large-scale temporal organization.
+3. **structural profiles** along time,
+4. **structural mass** as an integrated summary of mesoscopic activity,
+5. **superlevel geometry** to isolate structurally active zones,
+6. **corrected multiscale boundary parsing** to detect changes,
+7. **event and regime extraction** to recover large-scale temporal organization.
 
-So the code does not begin from generic ML feature engineering.  
-It begins from a mathematical theory of trajectory organization.
-
-That is the main reason the computational part is scientifically valuable.
+This means the mathematics is not only providing notation.  
+It determines **what is computed, how it is computed, and why the resulting quantities are meaningful**.
 
 ---
 
-# 🧩 From mathematical objects to executable objects
+## 🧭 Scope of the repository
 
-## 1. Local jets become discrete centered windows 🔹
+This repository is focused on **structural analysis of observable learning trajectories**.
 
-In the manuscript, local behavior is studied through local trajectory structure.  
-In the code, this becomes a centered discrete window extracted around each admissible time index.
+It is **not** an early-stopping rule and **not** a learning-rate selection criterion.  
+Its purpose is different:
 
-This is computationally important because it creates a **localized view of the trajectory**.  
-Instead of summarizing the whole run with a single scalar, the trajectory is scanned point by point through local neighborhoods.
+- to define stable structural descriptors for trajectory organization,
+- to operationalize them in a reproducible computational pipeline,
+- and to evaluate whether they recover nontrivial temporal information beyond terminal summaries.
 
-That move is fundamental:
-
-- it preserves temporal information,
-- it allows the method to detect local irregularities,
-- and it creates the base layer for all later structural quantities.
-
-So the first computational contribution of the mathematics is **localization**.
+That distinction matters both scientifically and editorially.
 
 ---
 
-## 2. Admissible observables become measurable local descriptors 📐
+## 🧩 From theory to executable objects
+
+### 1. Local jets become centered discrete windows
+
+The manuscript studies local behavior through local trajectory structure.  
+In the code, that becomes a centered window extracted around each admissible iteration.
+
+This creates a localized view of the trajectory instead of collapsing the entire run into a single scalar.  
+That move preserves temporal information and enables the later structural layers.
+
+### 2. Local observables become measurable descriptors
 
 The code computes three central local observables:
 
@@ -90,377 +79,265 @@ The code computes three central local observables:
 - **triangular excess**,
 - **second-order window mass**.
 
-These are not random quantities.
-
+These are structurally meaningful quantities.  
 They measure complementary aspects of local shape:
 
-- how much the path spreads inside a window,
-- how non-geodesic or non-flat the local geometry is,
-- how much second-order bending or acceleration exists.
+- spread inside the window,
+- non-geodesicity or non-flatness,
+- and second-order bending / acceleration.
 
-This is where the mathematical viewpoint creates computational value:
+This is where the formal layer becomes computationally useful: the method compresses local geometry into finite-dimensional descriptors that remain interpretable.
 
-- instead of storing full windows,
-- the method compresses them into **structurally interpretable descriptors**.
+### 3. Structural profiles convert local geometry into temporal signals
 
-So the mathematics yields a principled feature map from local trajectory geometry to finite-dimensional computational summaries.
+Once local observables are computed over valid centers, they are assembled into **profiles along time**.
 
----
+These profiles are mesoscopic signals.  
+They indicate where the trajectory is locally smooth, curved, structurally active, or unstable.
 
-## 3. Structural profiles convert local geometry into a temporal signal 📈
+This is one of the key computational steps of the repository:
 
-Once local observables are computed over all valid centers, the code assembles them into **profiles along time**.
+- a high-dimensional trajectory becomes a small number of informative temporal signals,
+- those signals can be compared across runs,
+- and they can be summarized statistically across seeds and conditions.
 
-This is one of the most important ideas in the repository.
+### 4. Structural mass bridges local and global description
 
-A structural profile is not just a list of values.  
-It is a **mesoscopic signal** that records where the trajectory is locally smooth, curved, concentrated, unstable, or structurally active.
+The code integrates profiles into quantities such as **structural mass**.
 
-This creates a major computational advantage:
+This matters because it links:
 
-- the original high-dimensional trajectory is transformed into a small number of meaningful temporal signals,
-- these signals can be compared across runs,
-- and they can be aggregated statistically across seeds and families.
-
-In other words, the mathematics gives a way to transform complex training dynamics into an analyzable time-series object.
-
----
-
-## 4. Structural mass gives a stable global summary of mesoscopic complexity ⚖️
-
-The code then integrates profiles into quantities such as **structural mass**.
-
-This is important because it creates a bridge between:
-
-- local geometry,
-- mesoscopic organization,
+- local behavior,
+- mesoscopic activity,
 - and global trajectory characterization.
 
-Computationally, this is powerful because it gives the reviewer both:
+The result is a useful balance:
 
-- a detailed local explanation through profiles,
-- and compact scalar summaries for tables and comparisons.
+- profiles remain available for interpretation,
+- while compact scalar summaries remain available for tables and classification experiments.
 
-That balance is one of the strengths of the framework:
+### 5. Superlevel geometry isolates structurally active zones
 
-> it does not force a choice between interpretability and summarization.
-
-The mathematics makes both possible.
-
----
-
-## 5. Superlevel geometry isolates the structurally active zones 🔥
-
-A crucial step in the pipeline is thresholding structural energy into **superlevel sets**.
-
-This is more than a convenience trick.
-
-It turns a continuous-valued structural signal into a geometric object:
+Thresholding structural energy into **superlevel sets** turns a temporal signal into a geometric object:
 
 - a mask,
-- a set of connected components,
-- and a set of boundary points.
+- connected components,
+- and candidate boundaries.
 
-This matters computationally because it lets the method identify not only the magnitude of structural activity, but also its **location**, **persistence**, and **fragmentation**.
+This lets the method quantify not only *how much* structural activity exists, but also its **location**, **persistence**, and **fragmentation**.
 
-So the mathematical notion of superlevel geometry becomes a practical device for:
+### 6. Corrected multiscale boundary parsing turns structure into temporal intelligence
 
-- detecting active temporal zones,
-- counting components,
-- quantifying complexity,
-- and preparing the path for event parsing.
+A major contribution of the computational layer is the **corrected multiscale boundary parser**.
 
----
-
-## 6. The corrected multiscale boundary parser is where the mathematics becomes temporal intelligence 🧭
-
-One of the strongest aspects of the script is that it does not define events from raw peaks of energy alone.
-
-Instead, the code uses a **corrected multiscale boundary score** built from:
+Instead of treating raw peaks of activity as transitions, the parser combines:
 
 - left/right contrast in structural profiles,
-- left/right contrast in residual energy,
-- fine-scale curvature information.
+- residual-energy contrast,
+- and fine-scale shape information.
 
-This is a genuine computational advance, because it addresses a real difficulty:
+This is important because **activity is not automatically the same as change**.
 
-> a large value of energy is not always the same thing as a structural transition.
+The parser therefore sharpens the temporal story:
 
-The parser therefore tries to detect boundaries in a mathematically sharper way.
+- it proposes boundary candidates,
+- it distinguishes persistent zones from transition points,
+- and it supports the recovery of events and regimes.
 
-This improves the computational story in three ways:
+### 7. Events and regimes make the output explanatory
 
-1. it distinguishes **activity** from **change**,
-2. it turns structural signals into explicit event candidates,
-3. it allows the trajectory to be segmented into **transition zones** and **macro-regimes**.
-
-This is exactly the point where the mathematics stops being descriptive and becomes algorithmic.
-
----
-
-## 7. Events and regimes make the framework explanatory, not just predictive 🧱
-
-Many computational pipelines stop at classification scores.  
-This one goes further.
-
-The code extracts:
+The final outputs of the pipeline are not only classification scores.  
+The repository can also recover:
 
 - boundary peaks,
 - event intervals,
-- transition intervals,
+- transition zones,
 - macro-regimes,
-- regime words / regime structure summaries.
+- and regime-level summaries.
 
-This matters because the output is not just “family A vs family B”.
-
-Instead, the method can say:
-
-- where the important changes happen,
-- how many transitions occur,
-- how many regimes the run contains,
-- and how the structural organization unfolds over time.
-
-That is a major computational contribution of the paper:
-
-> it provides an **interpretable temporal parser** of learning dynamics.
+That matters because the framework is explanatory rather than merely predictive: it tries to say **where** changes happen and **how** the trajectory is organized over time.
 
 ---
 
-# 🧪 Why the synthetic experiment is mathematically useful
+## 🧪 Synthetic study: controlled identifiability environment
 
-The synthetic block is not there to claim state-of-the-art benchmark performance.
+The synthetic layer is not meant to claim benchmark leadership.  
+Its role is to provide a **controlled laboratory** in which temporal organization is partially known in advance.
 
-Its role is different and much more aligned with the paper.
-
-The code builds a controlled trajectory laboratory using a simple nonlinear binary dataset and logistic training under several scheduled learning-rate regimes.
-
-These include families such as:
+The code generates structured families such as:
 
 - homogeneous dynamics,
-- regime-change dynamics,
-- three-phase dynamics,
+- oscillatory dynamics,
 - pulse dynamics,
-- oscillatory dynamics.
+- regime-change dynamics,
+- three-phase dynamics.
 
-This design is mathematically important because the true temporal organization is partially known in advance.
+This makes the synthetic experiment mathematically useful: the descriptors can be tested against settings where different types of temporal organization are deliberately present.
 
-That lets the computational layer test whether the proposed descriptors can recover:
-
-- no regime changes,
-- one regime change,
-- multiple phases,
-- transient pulses,
-- oscillatory structure.
-
-So the synthetic layer is not “toy” in a weak sense.  
+So the synthetic layer is not a weak toy example.  
 It is a **controlled identifiability environment** for the theory.
 
 ---
 
-# 🌍 Why external datasets are still necessary
+## 🔍 Endpoint-matched intervention study
 
-A referee could still object:
+One of the most important additions in the current version of the repository is the **endpoint-matched intervention study**.
 
-> “Perhaps the method only works because the synthetic environment was designed to make it work.”
+Its purpose is to ask a reviewer-facing question very directly:
 
-That is precisely why the repository adds a compact external validation layer.
+> **what happens when different trajectory families are forced to end at very similar endpoints?**
 
-The code includes:
+This matters because endpoint summaries such as final loss or final accuracy can hide relevant internal differences.
 
-- **Airfoil-Self-Noise** as a real external validation case,
-- **Mini-PDEBench-Darcy** as a scientific machine learning / PDE-oriented validation case.
+The matched-endpoint study therefore selects runs whose terminal summaries are tightly aligned and then tests whether internal organization remains detectable.
 
-This is important because it shows that the same structural logic can survive outside the toy family generator.
+The main takeaway is deliberately modest and careful:
 
-So the computational contribution is twofold:
+- when endpoint information becomes weak,
+- internal temporal organization can still remain informative,
+- and structural or geometry-aware descriptors can recover that signal in an interpretable way.
 
-- **internal validity** through controlled synthetic families,
+This is a strong computational argument because it shows that the framework is not only repackaging the last iterate.
+
+---
+
+## 🌍 External validation: Airfoil and mini-Darcy
+
+A natural objection is that the method could work only because the synthetic environment was designed for it.
+
+That is why the repository adds compact public external cases:
+
+- **Airfoil Self-Noise**
+- **mini-PDEBench Darcy**
+
+These datasets serve a specific purpose: they test whether the same structural logic remains meaningful outside the controlled generator.
+
+This provides two layers of credibility:
+
+- **internal validity** through synthetic identifiability experiments,
 - **external plausibility** through public datasets with different structure.
 
-That strengthens the paper considerably.
+---
+
+## 🛡️ Real-case robustness layer
+
+The repository also includes a **real-case robustness study**.
+
+This layer checks whether the structural extraction and boundary parsing remain informative under moderate configuration perturbations.
+
+That matters for two reasons:
+
+1. it reduces the risk that the main conclusions depend on one brittle hand-tuned setting,
+2. it provides a more computer-science-oriented validation story centered on reproducibility and sensitivity analysis.
+
+So the computational contribution is not only “the method works once,” but also “the method remains meaningful under nearby reasonable configurations.”
 
 ---
 
-# 📊 Why the temporal null control is a strong reviewer-facing argument
+## 📊 Why the temporal discrimination tables matter
 
-One of the most important parts of the code is the **temporal null control**.
+Several parts of the repository ask a central scientific question:
 
-This section compares different feature blocks such as:
+> **does the method detect real temporal organization, or is it only repackaging terminal summaries?**
 
-- terminal-only information,
-- structural core,
-- global + structural combinations,
-- fuller clean feature blocks.
+This is tested through comparisons among feature blocks such as:
 
-This is conceptually powerful because it asks a very direct scientific question:
+- terminal-only summaries,
+- global geometric summaries,
+- structural-core descriptors,
+- combined blocks,
+- and matched-endpoint variants.
 
-> does the method capture real temporal organization, or is it only repackaging endpoint information?
+These experiments matter because they evaluate not only descriptive richness, but also **usefulness**.
 
-If structural features outperform terminal-only summaries, then the computational evidence supports the central claim of the paper:
+The goal is not to claim that every structural block dominates every simpler alternative in every setting.  
+The goal is more disciplined:
 
-- trajectories contain internal organization,
-- that organization is not reducible to the last iterate,
-- and the mathematical descriptors recover useful information that terminal metrics miss.
+- to show that endpoint summaries are often insufficient,
+- to show that internal organization remains detectable,
+- and to show that the structural layer provides a principled, interpretable, and theory-aligned representation of that organization.
 
-This is exactly the kind of test a careful referee would want to see.
-
----
-
-# 🛡️ Why the robustness layer matters
-
-A paper can look convincing if it reports one carefully chosen configuration.  
-A stronger paper tests whether the conclusions survive nearby settings.
-
-That is the role of the parser robustness layer.
-
-The code evaluates sensitivity around the parsing mechanism and keeps quantities such as:
-
-- boundary-peak recall,
-- boundary-peak precision,
-- event recovery behavior,
-- regime recovery behavior,
-- structural stability summaries.
-
-This is important because it reduces the danger that the full story depends on a brittle hand-tuned setting.
-
-Even more importantly, the code explicitly avoids using parser-vs-ground-truth quantities as classification features in the temporal classification tables.  
-Those quantities are reserved for the robustness layer where they actually belong.
-
-This separation is methodologically clean and strengthens the credibility of the results.
+That is the reviewer-facing value of the computational results.
 
 ---
 
-# ⚙️ The computational contribution in one sentence
+## 🗂️ What is in the paper and what is in the repository
 
-The computational contribution of this repository is that it transforms an abstract mathematical theory of trajectory geometry into a reproducible algorithmic pipeline that can:
+The paper intentionally keeps a **compact subset** of the computational evidence so that the manuscript remains readable and aligned with a computer-science / scientific-computing audience.
 
-- localize structure,
-- quantify it,
-- detect transitions,
-- recover regimes,
-- test robustness,
-- and validate the framework both internally and externally.
+Accordingly:
 
----
+- the manuscript keeps the most informative tables for the main argument,
+- while the repository and Colab expose the broader computational record.
 
-# 🧭 How the mathematics improves computation in practice
+When you run the notebook / Colab, the repository makes available:
 
-## A. Better representation
-The code replaces raw trajectory storage with mathematically meaningful local summaries.
+- the main paper-facing tables,
+- additional appendix-style tables,
+- extended ablations,
+- robustness outputs,
+- and full reproducibility artifacts.
 
-## B. Better interpretability
-Each computed quantity has a structural role:
-oscillation, excess, mass, superlevel, boundary, event, regime.
-
-## C. Better temporal resolution
-The method does not collapse everything into final loss or final accuracy.
-
-## D. Better segmentation
-The parser identifies where meaningful changes occur in the trajectory.
-
-## E. Better validation logic
-The synthetic families let the code test recoverability under controlled temporal patterns.
-
-## F. Better external credibility
-Airfoil and Darcy show that the same logic is not confined to one handcrafted environment.
-
-## G. Better methodological discipline
-The code separates:
-- descriptive structure,
-- temporal discrimination,
-- and parser-ground-truth evaluation.
-
-That separation is important for a clean scientific argument.
+This design is deliberate.  
+It lets the paper stay compact while still making the broader evidence fully inspectable.
 
 ---
 
-# 🗂️ What each group of tables is doing
-
-## Tables A–C: Internal geometric and structural evidence
-These tables show that the synthetic learning families differ in:
-
-- global geometry,
-- structural profile behavior,
-- event / regime / superlevel complexity.
-
-This establishes the descriptive and structural core of the method.
-
-## Tables D–F: Validation of usefulness
-These tables ask whether the descriptors are:
-
-- discriminative,
-- nontrivial beyond terminal summaries,
-- and robust to nearby parser configurations.
-
-This establishes methodological credibility.
-
-## Tables G, I, J, L, M: Compact external validation
-These tables move the framework outside the synthetic laboratory and check whether the same descriptors retain explanatory value on public external cases.
-
-This establishes transferability.
-
----
-
-# 🖼️ Why the figures matter scientifically
+## 🖼️ Role of the figures
 
 The figures are not ornamental.  
-They create a visual map between the theory and the code.
+They help visualize the connection between theory and computation by showing:
 
-They let the reviewer see:
+- geometric separation,
+- structural profile behavior,
+- representative temporal organization,
+- and boundary-score behavior.
 
-- global geometric separation,
-- structural profile shape,
-- representative trajectory organization,
-- boundary scores and detected peaks.
-
-This is useful because the theory is naturally multi-scale:
-
-- global,
-- local,
-- mesoscopic,
-- event-level.
-
-The figures make those scales visible.
+At the same time, the repository is designed so that the paper’s central argument does **not** depend on every figure appearing in the manuscript.  
+Several visual or extended outputs can remain in the repository while the paper keeps a tighter main narrative.
 
 ---
 
-# 💻 Why this counts as a real computational benefit for the field
+## 💻 Why this is a real computational contribution
 
-The repository contributes something computationally meaningful because it offers a reusable way to study learning trajectories as structured objects rather than as endpoint summaries only.
+This repository contributes something reusable to the study of learning dynamics.
 
-That opens several possibilities:
+It offers a way to treat trajectories as **structured temporal objects** rather than as endpoint summaries only.
 
-- comparing optimizers by geometry instead of only final score,
-- studying training instability through structural profiles,
+That opens several computational possibilities:
+
+- comparing training regimes through geometry and structure,
 - detecting phase changes automatically,
-- quantifying temporal organization in scientific ML,
-- building new diagnostic layers for optimization research.
+- studying instability through profiles and regime parsers,
+- characterizing learning dynamics in scientific ML,
+- and building trajectory-level diagnostic layers that go beyond final metrics.
 
 So the code is not only validating the paper.  
-It is also proposing a potentially reusable computational toolkit.
+It is also proposing a reusable computational toolkit.
 
 ---
 
-# 📦 Reproducibility and design philosophy
+## ⚙️ Reproducibility philosophy
 
-The repository is organized so that the paper’s claims are reproducible and auditable.
+The repository is organized so that the manuscript’s claims are reproducible and auditable.
 
 It includes:
 
 - explicit default settings,
 - repeated seeds,
 - family-wise organization,
-- compact reporting tables,
-- and a reduced fast validation layer that preserves the main claims while keeping execution manageable.
+- compact paper-facing summaries,
+- extended appendix-style outputs,
+- and a practical execution path through GitHub / Colab.
 
 This is important because a computational contribution should not only be interesting.  
-It should also be executable, inspectable, and reusable by others.
+It should also be executable, inspectable, and reusable.
 
 ---
 
-# ✅ Final message for the reviewer
+## ✅ Final message for the reviewer
 
-This code should be read as the **computational crown of the paper**.
+This repository should be read as the **computational counterpart** of the paper.
 
 Its purpose is not to win a benchmark.  
 Its purpose is to show that the manuscript’s mathematical framework generates a real computational methodology.
@@ -469,10 +346,11 @@ More precisely, the repository demonstrates that:
 
 1. the paper’s abstract objects can be turned into algorithms,
 2. those algorithms recover meaningful temporal structure,
-3. the resulting descriptors are informative beyond endpoint summaries,
-4. the parser is not purely ad hoc,
-5. and the whole framework remains meaningful on external public datasets.
+3. endpoint summaries are often insufficient to describe trajectory organization,
+4. the structural layer provides interpretable and theory-aligned trajectory descriptors,
+5. the extraction pipeline remains meaningful on public external datasets,
+6. and the broader evidence is fully reproducible through the accompanying GitHub / Colab materials.
 
-That is why this repository is not just supporting material.
+That is why this repository is not merely supporting material.
 
 It is part of the contribution.
